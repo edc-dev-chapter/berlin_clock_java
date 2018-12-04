@@ -40,13 +40,13 @@ class BerlinerClockTest {
         assertEquals(4, new BerlinerClock(anyTime).getSingleMinutesRow().length());
     }
 
-    @DisplayName("Seconds row")
+    @DisplayName("For seconds row")
     @ParameterizedTest(name = "\"{0}\" should be {1}")
     @CsvSource({
             "00:00:00, Y",
             "23:59:59, O",
     })
-    void shouldBlinkWhenSecondsAreEven(String hour, String row) {
+    void testSecondsRow(String hour, String row) {
         assertEquals(row, new BerlinerClock(hour).getSeconds());
     }
 
