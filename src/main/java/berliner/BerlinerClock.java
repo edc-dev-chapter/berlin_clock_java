@@ -2,22 +2,21 @@ package berliner;
 
 import berliner.lamp.LampRow;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 import static berliner.lamp.RedLamp.red;
 import static berliner.lamp.YellowLamp.yellow;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 class BerlinerClock {
     private final Integer seconds;
     private final Integer minutes;
     private final Integer hours;
 
-    private final LampRow secondsRow = new LampRow(Collections.singletonList(yellow()));
-    private final LampRow topHoursRow = new LampRow(Arrays.asList(red(), red(), red(), red()));
-    private final LampRow bottomHoursRow = new LampRow(Arrays.asList(red(), red(), red(), red()));
-    private final LampRow singleMinutesRow = new LampRow(Arrays.asList(yellow(), yellow(), yellow(), yellow()));
-    private final LampRow fiveMinutesRow = new LampRow(Arrays.asList(
+    private final LampRow secondsRow = new LampRow(singletonList(yellow()));
+    private final LampRow topHoursRow = new LampRow(asList(red(), red(), red(), red()));
+    private final LampRow bottomHoursRow = new LampRow(asList(red(), red(), red(), red()));
+    private final LampRow singleMinutesRow = new LampRow(asList(yellow(), yellow(), yellow(), yellow()));
+    private final LampRow fiveMinutesRow = new LampRow(asList(
             yellow(), yellow(), red(),
             yellow(), yellow(), red(),
             yellow(), yellow(), red(),
