@@ -16,7 +16,7 @@ public class LampRow {
         return this;
     }
 
-    public String asString() {
+    public String display() {
         return row.stream()
                 .map(Lamp::toString)
                 .collect(Collectors.joining());

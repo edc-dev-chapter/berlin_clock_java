@@ -30,23 +30,29 @@ class BerlinerClock {
         hours = Integer.valueOf(parts[0]);
     }
 
-    String getSeconds() {
-        return secondsRow.turnOn(1 - seconds % 2).asString();
+    String displaySeconds() {
+        return secondsRow.turnOn(1 - seconds % 2).display();
     }
 
-    String getTopHours() {
-        return topHoursRow.turnOn(hours / 5).asString();
+    String displayTopHours() {
+        return topHoursRow.turnOn(hours / 5).display();
     }
 
-    String getBottomHoursRow() {
-        return bottomHoursRow.turnOn(hours % 5).asString();
+    String displayBottomHoursRow() {
+        return bottomHoursRow.turnOn(hours % 5).display();
     }
 
-    String getFiveMinutesRow() {
-        return fiveMinutesRow.turnOn(minutes / 5).asString();
+    String displayFiveMinutesRow() {
+        return fiveMinutesRow.turnOn(minutes / 5).display();
     }
 
-    String getSingleMinutesRow() {
-        return singleMinutesRow.turnOn(minutes % 5).asString();
+    String displaySingleMinutesRow() {
+        return singleMinutesRow.turnOn(minutes % 5).display();
+    }
+
+    String displayTime() {
+        return displaySeconds()
+                + displayTopHours() + displayBottomHoursRow()
+                + displayFiveMinutesRow() + displaySingleMinutesRow();
     }
 }

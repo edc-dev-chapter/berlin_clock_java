@@ -13,31 +13,31 @@ class BerlinerClockTest {
     @Test
     void shouldReturnOneLampInSecondsRow() {
         String myTime = "00:00:00";
-        assertEquals(1, new BerlinerClock(myTime).getSeconds().length());
+        assertEquals(1, new BerlinerClock(myTime).displaySeconds().length());
     }
 
     @Test
     void shouldReturnFourLampsInTopHoursRow() {
         String anyTime = "00:00:00";
-        assertEquals(4, new BerlinerClock(anyTime).getTopHours().length());
+        assertEquals(4, new BerlinerClock(anyTime).displayTopHours().length());
     }
 
     @Test
     void shouldReturnFourLampsInBottomHoursRow() {
         String anyTime = "00:00:00";
-        assertEquals(4, new BerlinerClock(anyTime).getBottomHoursRow().length());
+        assertEquals(4, new BerlinerClock(anyTime).displayBottomHoursRow().length());
     }
 
     @Test
     void shouldReturnElevenLampsInFiveMinutesRow() {
         String anyTime = "00:00:00";
-        assertEquals(11, new BerlinerClock(anyTime).getFiveMinutesRow().length());
+        assertEquals(11, new BerlinerClock(anyTime).displayFiveMinutesRow().length());
     }
 
     @Test
     void shouldReturnFourLampsInSingleMinutesRow() {
         String anyTime = "00:00:00";
-        assertEquals(4, new BerlinerClock(anyTime).getSingleMinutesRow().length());
+        assertEquals(4, new BerlinerClock(anyTime).displaySingleMinutesRow().length());
     }
 
     @DisplayName("For seconds row")
@@ -46,8 +46,8 @@ class BerlinerClockTest {
             "00:00:00, Y",
             "23:59:59, O",
     })
-    void testSecondsRow(String hour, String row) {
-        assertEquals(row, new BerlinerClock(hour).getSeconds());
+    void testSecondsRow(String hour, String output) {
+        assertEquals(output, new BerlinerClock(hour).displaySeconds());
     }
 
     @DisplayName("For top hours row")
@@ -59,8 +59,8 @@ class BerlinerClockTest {
             "08:23:00, ROOO",
             "16:35:00, RRRO"
     })
-    void testTopHoursRow(String hour, String row) {
-        assertEquals(row, new BerlinerClock(hour).getTopHours());
+    void testTopHoursRow(String hour, String output) {
+        assertEquals(output, new BerlinerClock(hour).displayTopHours());
     }
 
     @DisplayName("For bottom hours row")
@@ -72,8 +72,8 @@ class BerlinerClockTest {
             "08:23:00, RRRO",
             "14:35:00, RRRR"
     })
-    void testBottomHoursRow(String hour, String row) {
-        assertEquals(row, new BerlinerClock(hour).getBottomHoursRow());
+    void testBottomHoursRow(String hour, String output) {
+        assertEquals(output, new BerlinerClock(hour).displayBottomHoursRow());
     }
 
     @DisplayName("For five minutes row")
@@ -85,8 +85,8 @@ class BerlinerClockTest {
             "12:23:00, YYRYOOOOOOO",
             "12:35:00, YYRYYRYOOOO"
     })
-    void testFiveMinutesRow(String hour, String row) {
-        assertEquals(row, new BerlinerClock(hour).getFiveMinutesRow());
+    void testFiveMinutesRow(String hour, String output) {
+        assertEquals(output, new BerlinerClock(hour).displayFiveMinutesRow());
     }
 
     @DisplayName("For single minutes row")
@@ -98,7 +98,19 @@ class BerlinerClockTest {
             "12:34:00, YYYY",
             "12:35:00, OOOO"
     })
-    void testSingleMinutesRow(String hour, String row) {
-        assertEquals(row, new BerlinerClock(hour).getSingleMinutesRow());
+    void testSingleMinutesRow(String hour, String output) {
+        assertEquals(output, new BerlinerClock(hour).displaySingleMinutesRow());
+    }
+
+    @DisplayName("Berlin clock for")
+    @ParameterizedTest(name = "\"{0}\" should return {1}")
+    @CsvSource({
+            "00:00:00, YOOOOOOOOOOOOOOOOOOOOOOO",
+            "23:59:59, ORRRRRRROYYRYYRYYRYYYYYY",
+            "16:50:06, YRRROROOOYYRYYRYYRYOOOOO",
+            "11:37:01, ORROOROOOYYRYYRYOOOOYYOO"
+     })
+    void testWholeClock(String hour, String output){
+        assertEquals(output, new BerlinerClock(hour).displayTime());
     }
 }
