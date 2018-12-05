@@ -1,7 +1,5 @@
 package berliner.lamp;
 
-import static berliner.lamp.Color.Off;
-
 public abstract class Lamp {
     private Color color;
 
@@ -15,7 +13,7 @@ public abstract class Lamp {
     }
 
     Lamp turnOff() {
-        color = Off;
+        color = Color.Off;
         return this;
     }
 
