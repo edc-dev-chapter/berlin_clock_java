@@ -1,7 +1,5 @@
 package berliner.lamp;
 
-import static berliner.lamp.Color.Yellow;
-
 public class YellowLamp extends Lamp {
 
     public static YellowLamp yellow() {
@@ -9,13 +7,7 @@ public class YellowLamp extends Lamp {
     }
 
     @Override
-    public Lamp turnOn() {
-        color = Yellow;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return color.toString();
+    Color blinkingColor() {
+        return Color.Yellow;
     }
 }

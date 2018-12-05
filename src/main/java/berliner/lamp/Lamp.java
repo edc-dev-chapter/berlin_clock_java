@@ -3,19 +3,28 @@ package berliner.lamp;
 import static berliner.lamp.Color.Off;
 
 public abstract class Lamp {
-    Color color;
+    private Color color;
 
     Lamp() {
         turnOff();
     }
 
-    abstract Lamp turnOn();
+    Lamp turnOn() {
+        color = blinkingColor();
+        return this;
+    }
 
-    protected Lamp turnOff() {
+    Lamp turnOff() {
         color = Off;
         return this;
     }
 
+    abstract Color blinkingColor();
+
+    @Override
+    public String toString() {
+        return color.toString();
+    }
 }
 
 
