@@ -25,19 +25,19 @@ class BerlinerClockTest {
     @Test
     void shouldReturnFourLampsInBottomHoursRow() {
         String anyTime = "00:00:00";
-        assertEquals(4, new BerlinerClock(anyTime).displayBottomHoursRow().length());
+        assertEquals(4, new BerlinerClock(anyTime).displayBottomHours().length());
     }
 
     @Test
     void shouldReturnElevenLampsInFiveMinutesRow() {
         String anyTime = "00:00:00";
-        assertEquals(11, new BerlinerClock(anyTime).displayFiveMinutesRow().length());
+        assertEquals(11, new BerlinerClock(anyTime).displayTopMinutes().length());
     }
 
     @Test
     void shouldReturnFourLampsInSingleMinutesRow() {
         String anyTime = "00:00:00";
-        assertEquals(4, new BerlinerClock(anyTime).displaySingleMinutesRow().length());
+        assertEquals(4, new BerlinerClock(anyTime).displayBottomMinutes().length());
     }
 
     @DisplayName("For seconds row")
@@ -73,7 +73,7 @@ class BerlinerClockTest {
             "14:35:00, RRRR"
     })
     void testBottomHoursRow(String hour, String output) {
-        assertEquals(output, new BerlinerClock(hour).displayBottomHoursRow());
+        assertEquals(output, new BerlinerClock(hour).displayBottomHours());
     }
 
     @DisplayName("For five minutes row")
@@ -86,7 +86,7 @@ class BerlinerClockTest {
             "12:35:00, YYRYYRYOOOO"
     })
     void testFiveMinutesRow(String hour, String output) {
-        assertEquals(output, new BerlinerClock(hour).displayFiveMinutesRow());
+        assertEquals(output, new BerlinerClock(hour).displayTopMinutes());
     }
 
     @DisplayName("For single minutes row")
@@ -99,7 +99,7 @@ class BerlinerClockTest {
             "12:35:00, OOOO"
     })
     void testSingleMinutesRow(String hour, String output) {
-        assertEquals(output, new BerlinerClock(hour).displaySingleMinutesRow());
+        assertEquals(output, new BerlinerClock(hour).displayBottomMinutes());
     }
 
     @DisplayName("Berlin clock for")

@@ -38,21 +38,21 @@ class BerlinerClock {
         return topHoursRow.turnOn(hours / 5).display();
     }
 
-    String displayBottomHoursRow() {
+    String displayBottomHours() {
         return bottomHoursRow.turnOn(hours % 5).display();
     }
 
-    String displayFiveMinutesRow() {
+    String displayTopMinutes() {
         return fiveMinutesRow.turnOn(minutes / 5).display();
     }
 
-    String displaySingleMinutesRow() {
+    String displayBottomMinutes() {
         return singleMinutesRow.turnOn(minutes % 5).display();
     }
 
     String displayTime() {
         return displaySeconds()
-                + displayTopHours() + displayBottomHoursRow()
-                + displayFiveMinutesRow() + displaySingleMinutesRow();
+                + displayTopHours() + displayBottomHours()
+                + displayTopMinutes() + displayBottomMinutes();
     }
 }
