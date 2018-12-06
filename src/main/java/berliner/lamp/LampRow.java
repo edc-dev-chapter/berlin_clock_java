@@ -12,7 +12,7 @@ public class LampRow {
     }
 
     public LampRow turnOn(int n) {
-        IntStream.range(0, n).forEach(i -> row.get(i).turnOn());
+        row.stream().limit(n).forEach(Lamp::turnOn);
         return this;
     }
 
