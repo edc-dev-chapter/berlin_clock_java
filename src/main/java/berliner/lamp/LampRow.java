@@ -1,14 +1,18 @@
 package berliner.lamp;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class LampRow {
     private final List<Lamp> row;
 
-    public LampRow(List<Lamp> lamps) {
-        row = lamps;
+    private LampRow(Lamp... lamps) {
+        row = Arrays.asList(lamps);
+    }
+
+    public static LampRow of(Lamp... lamps){
+        return new LampRow(lamps);
     }
 
     public LampRow turnOn(int n) {
